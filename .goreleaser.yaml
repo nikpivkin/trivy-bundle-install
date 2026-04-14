@@ -2,8 +2,8 @@ version: 2
 
 before:
   hooks:
-    - sed -i 's|/download/v[^/]*/|/download/v{{ .Version }}/|g' plugin.yaml
-    - sed -i 's/^version: .*/version: "{{ .Version }}"/' plugin.yaml
+    - "sed -i.bak 's|/download/v[^/]*/|/download/v{{ .Version }}/|g' plugin.yaml && rm plugin.yaml.bak"
+    - "sed -i.bak 's/^version: .*/version: \"{{ .Version }}\"/' plugin.yaml && rm plugin.yaml.bak"
 
 builds:
   - id: trivy-bundle-install
