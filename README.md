@@ -21,11 +21,18 @@ trivy bundle-install --bundle-url <url>
 | `--bundle-url` | URL or path of the checks bundle to download (required) |
 | `--cache-dir` | Trivy cache directory (default: auto-detected from trivy) |
 
-> **Note:** Currently only local file paths are supported. Support for HTTP, S3, GCS and other sources is planned.
+> **Note:** Support for S3, GCS and other sources is planned.
 
 ### Examples
 
 ```bash
+# From OCI registry
+trivy bundle-install --bundle-url oci://ghcr.io/aquasecurity/trivy-checks:2
+
+# From HTTP
+trivy bundle-install --bundle-url https://example.com/bundle.tar.gz
+
+# From local path
 trivy bundle-install --bundle-url file:///path/to/bundle
 ```
 
