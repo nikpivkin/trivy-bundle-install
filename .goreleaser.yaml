@@ -1,0 +1,29 @@
+version: 2
+
+before:
+  hooks:
+    - sed -i 's|/download/v[^/]*/|/download/v{{ .Version }}/|g' plugin.yaml
+    - sed -i 's/^version: .*/version: "{{ .Version }}"/' plugin.yaml
+
+builds:
+  - id: trivy-bundle-install
+    binary: trivy-bundle-install
+    goos:
+      - linux
+      - darwin
+    goarch:
+      - amd64
+      - arm64
+    env:
+      - CGO_ENABLED=0
+    ldflags:
+      - -s -w
+
+archives:
+  - id: trivy-bundle-install
+    formats: [tar.gz]
+    name_template: "trivy-bundle-install_{{ .Os }}_{{ .Arch }}"
+
+release:
+  extra_files:
+    - glob: plugin.yaml

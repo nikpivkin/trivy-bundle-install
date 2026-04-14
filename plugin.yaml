@@ -1,0 +1,25 @@
+name: "bundle-install"
+version: "0.1.0"
+usage: trivy bundle-install --bundle-url <url>
+description: Downloads and installs a checks bundle to the Trivy cache directory
+platforms:
+  - selector:
+      os: darwin
+      arch: arm64
+    uri: https://github.com/nikpivkin/trivy-bundle-install/releases/download/v0.1.0/trivy-bundle-install_darwin_arm64.tar.gz
+    bin: trivy-bundle-install
+  - selector:
+      os: darwin
+      arch: amd64
+    uri: https://github.com/nikpivkin/trivy-bundle-install/releases/download/v0.1.0/trivy-bundle-install_darwin_amd64.tar.gz
+    bin: trivy-bundle-install
+  - selector:
+      os: linux
+      arch: amd64
+    uri: https://github.com/nikpivkin/trivy-bundle-install/releases/download/v0.1.0/trivy-bundle-install_linux_amd64.tar.gz
+    bin: trivy-bundle-install
+  - selector:
+      os: linux
+      arch: arm64
+    uri: https://github.com/nikpivkin/trivy-bundle-install/releases/download/v0.1.0/trivy-bundle-install_linux_arm64.tar.gz
+    bin: trivy-bundle-install
